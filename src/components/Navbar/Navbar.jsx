@@ -9,8 +9,8 @@ class MainNavbar extends Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Navbar.Brand href="#">TyynyWeb</Navbar.Brand>
-            <Nav.Link href="#">Kuvat</Nav.Link>
+            <Navbar.Brand href="/">TyynyWeb</Navbar.Brand>
+            <Nav.Link href="/Login">Login</Nav.Link>
             <Nav.Link href="#">Discord</Nav.Link>
             <Nav.Link href="#">Telegram</Nav.Link>
             <Nav.Link href="#">Äänestykset</Nav.Link>
