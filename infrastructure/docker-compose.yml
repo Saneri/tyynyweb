@@ -5,6 +5,6 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_DB: tyynyweb
+      POSTGRES_DB: tyynyweb-database
       POSTGRES_USER: demo
       POSTGRES_PASSWORD: mode

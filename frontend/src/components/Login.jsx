@@ -9,8 +9,6 @@ import {
   MDBBtn
 } from 'mdbreact';
 
-import './Login.css';
-
 class Login extends Component {
   state = {};
   render() {
