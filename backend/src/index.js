@@ -5,6 +5,7 @@ const typeorm = require('typeorm');
 const dotenv = require('dotenv');
 
 const router = require('./routes/index');
+const User = require('./entities/user');
 
 dotenv.config();
 const app = express();
@@ -21,22 +22,16 @@ function initDatabase() {
     database: process.env.DB_NAME,
     password: process.env.DB_PASS,
     port: Number(process.env.DB_PORT),
-    entities: [Lunch, Participant, User, Restaurant, FoodType],
-    migrations: [__dirname + '/migrations/**/*.js'],
-    cli: {
-      migrationsDir: 'src/migrations'
-    },
-    migrationsTableName: 'Migrations',
+    entities: [User],
     synchronize: true,
-    migrationsRun: true,
     logging: false
   });
 }
 
-//initDatabase().then(() => {
-app.listen(port, () =>
-  console.log(`TyynyWeb backend listening on port ${port}`)
-);
+initDatabase().then(() => {
+  app.listen(port, () =>
+    console.log(`TyynyWeb backend listening on port ${port}`)
+  );
 
-app.use('/', router);
-//});
+  app.use('/', router);
+});
