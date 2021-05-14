@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-//const req = express.Request;
-//const res = express.Response;
 
-router.get('/test', function (req, res) {
-  res.send({ test: 'test' });
-});
+const user = require('../controllers/user');
 
-router.use('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send({ info: 'TyynyWeb backend' });
 });
+
+router.post('/user', user.create);
+
+router.get('/user', user.getAll);
 
 module.exports = router;
