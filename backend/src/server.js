@@ -15,10 +15,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-async function assertDatabaseConnectionOk() {
-  console.log(`Checking database connection...`);
+async function initDatabase() {
+  console.log(`Synching with database...`);
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: true }).then(() => {
+      console.log('Drop and re-sync db.');
+    });
+
     console.log('Database sync OK!');
   } catch (error) {
     console.log('Unable to sync the database:');
@@ -28,7 +31,7 @@ async function assertDatabaseConnectionOk() {
 }
 
 async function init() {
-  await assertDatabaseConnectionOk();
+  await initDatabase();
 
   app.listen(port, () =>
     console.log(`TyynyWeb backend listening on port ${port}`)

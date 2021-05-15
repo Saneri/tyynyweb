@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const db = require('../db');
 
 async function create(req, res) {
@@ -7,7 +9,7 @@ async function create(req, res) {
   } else {
     const user = {
       username: req.body.username,
-      password: req.body.password
+      hashedPassword: await bcrypt.hash(req.body.password, 10)
     };
 
     await db.models.user.create(user);
