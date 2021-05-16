@@ -10,7 +10,13 @@ module.exports = (sequelize) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        len: {
+          args: [3, 20],
+          msg: 'Username must be between 3 and 20 characters'
+        }
+      }
     },
     hashedPassword: {
       type: DataTypes.STRING,

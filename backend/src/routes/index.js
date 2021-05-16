@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/user', user.create);
-
 router.get('/user', user.getAll);
+router.post('/user/login', user.login);
 
 module.exports = router;
